@@ -1,20 +1,51 @@
+import Entypo from '@expo/vector-icons/Entypo';
+import { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../constants/colors";
+import BrandName from '@/components/BrandName';
+
 
 export default function Index() {
+  const [showPassword, setShowPassword] = useState(true);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(true);
+
+  function passwordOnPressFunction(){
+    setShowPassword((prev) => {
+      return !prev
+    });
+  }
+
+  function ConfirmPassOnPressFunction(){
+    setShowConfirmPassword((prev) => {
+      return !prev
+    });
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.brandName}>Al Saqar Driving School</Text>
+      <BrandName></BrandName>
       <Text style={styles.heading}>Sign Up</Text>
-      <TextInput style={styles.input}
+      <TextInput style={styles.usernameInput} 
         placeholder="Username"
       ></TextInput>
+      <View style={styles.passwordField}>
       <TextInput style={styles.input}
         placeholder="Password"
+        secureTextEntry={showPassword ? true : false}
       ></TextInput>
+      <Pressable onPress={passwordOnPressFunction}>
+        {showPassword ? <Entypo name="eye-with-line" size={24} color="black" /> : <Entypo name="eye" size={24} color="black" /> }
+      </Pressable>
+      </View>
+
+      <View style={styles.passwordField} >
       <TextInput style={styles.input}
         placeholder="Confirm Password"
+        secureTextEntry={showConfirmPassword ? true : false}
       ></TextInput>
+      <Pressable onPress={ConfirmPassOnPressFunction}>
+        {showConfirmPassword ? <Entypo name="eye-with-line" size={24} color="black" /> : <Entypo name="eye" size={24} color="black" /> }
+      </Pressable>
+      </View>
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </Pressable>
@@ -28,16 +59,8 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     justifyContent: "center",
-    margin: 20,
+    padding: 20,
     backgroundColor: Colors.background,
-    marginBottom: 20,
-  },
-  brandName: {
-    fontSize: 18,
-    fontWeight: "500",
-    textAlign: "center",
-    margin: 5,
-    color: Colors.secondary,
   },
   heading: {
     fontSize: 26,
@@ -46,11 +69,11 @@ const styles = StyleSheet.create({
     margin: 15,
     color: Colors.secondary,
   },
-  input: {
+  usernameInput: {
     height: 40,
-    padding: 14,
-    borderWidth: 1,
+    padding: 9,
     borderRadius: 10,
+    borderWidth: 2,
     margin: 10,
     borderColor: Colors.secondary,
   },
@@ -71,5 +94,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
     color: Colors.secondary,
-  }
+    fontWeight: "500",
+  },
+  passwordField: {
+    flexDirection: "row",
+    height: 40,
+    margin: 10,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: Colors.secondary,
+    alignItems: "center",
+    paddingRight: 10,
+  },
+  input: {
+    flex: 1,
+    padding: 9,
+  },
 })
