@@ -1,51 +1,35 @@
+import BrandName from '@/components/BrandName';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../constants/colors";
-import BrandName from '@/components/BrandName';
+import PasswordField from '@/components/PasswordField';
 
 
 export default function Index() {
-  const [showPassword, setShowPassword] = useState(true);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(true);
+  // const [showPassword, setShowPassword] = useState(true);
+  // const [showConfirmPassword, setShowConfirmPassword] = useState(true);
 
-  function passwordOnPressFunction(){
-    setShowPassword((prev) => {
-      return !prev
-    });
-  }
+  // function passwordOnPressFunction(){
+  //   setShowPassword((prev) => {
+  //     return !prev
+  //   });
+  // }
 
-  function ConfirmPassOnPressFunction(){
-    setShowConfirmPassword((prev) => {
-      return !prev
-    });
-  }
+  // function ConfirmPassOnPressFunction(){
+  //   setShowConfirmPassword((prev) => {
+  //     return !prev
+  //   });
+  // }
   return (
     <View style={styles.container}>
-      <BrandName></BrandName>
+      <BrandName/>
       <Text style={styles.heading}>Sign Up</Text>
-      <TextInput style={styles.usernameInput} 
+      <TextInput style={styles.usernameInput}
         placeholder="Username"
       ></TextInput>
-      <View style={styles.passwordField}>
-      <TextInput style={styles.input}
-        placeholder="Password"
-        secureTextEntry={showPassword ? true : false}
-      ></TextInput>
-      <Pressable onPress={passwordOnPressFunction}>
-        {showPassword ? <Entypo name="eye-with-line" size={24} color="black" /> : <Entypo name="eye" size={24} color="black" /> }
-      </Pressable>
-      </View>
-
-      <View style={styles.passwordField} >
-      <TextInput style={styles.input}
-        placeholder="Confirm Password"
-        secureTextEntry={showConfirmPassword ? true : false}
-      ></TextInput>
-      <Pressable onPress={ConfirmPassOnPressFunction}>
-        {showConfirmPassword ? <Entypo name="eye-with-line" size={24} color="black" /> : <Entypo name="eye" size={24} color="black" /> }
-      </Pressable>
-      </View>
+      <PasswordField placeholder='Password'/>
+      <PasswordField placeholder='Confirm Password'/>
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </Pressable>
@@ -95,19 +79,5 @@ const styles = StyleSheet.create({
     margin: 10,
     color: Colors.secondary,
     fontWeight: "500",
-  },
-  passwordField: {
-    flexDirection: "row",
-    height: 40,
-    margin: 10,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: Colors.secondary,
-    alignItems: "center",
-    paddingRight: 10,
-  },
-  input: {
-    flex: 1,
-    padding: 9,
-  },
+  }
 })
