@@ -1,26 +1,11 @@
 import BrandName from '@/components/BrandName';
-import Entypo from '@expo/vector-icons/Entypo';
-import { useState } from "react";
+import PasswordField from '@/components/PasswordField';
+import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../constants/colors";
-import PasswordField from '@/components/PasswordField';
 
 
 export default function Index() {
-  // const [showPassword, setShowPassword] = useState(true);
-  // const [showConfirmPassword, setShowConfirmPassword] = useState(true);
-
-  // function passwordOnPressFunction(){
-  //   setShowPassword((prev) => {
-  //     return !prev
-  //   });
-  // }
-
-  // function ConfirmPassOnPressFunction(){
-  //   setShowConfirmPassword((prev) => {
-  //     return !prev
-  //   });
-  // }
   return (
     <View style={styles.container}>
       <BrandName/>
@@ -33,7 +18,10 @@ export default function Index() {
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </Pressable>
-      <Text style={styles.linkText}>Already have an account? Sign In</Text>
+      <Text onPress={() => router.replace("/signin")} 
+        style={styles.linkText}>
+        Already have an account? Sign In
+        </Text>
     </View>
   );
 }

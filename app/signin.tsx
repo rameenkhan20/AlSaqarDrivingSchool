@@ -2,6 +2,8 @@ import BrandName from '@/components/BrandName';
 import { View, StyleSheet, Text, TextInput, Pressable } from "react-native";
 import {Colors} from "../constants/colors";
 import PasswordField from '@/components/PasswordField';
+import { router } from 'expo-router';
+
 
 export default function SignIn() {
     return(
@@ -15,7 +17,11 @@ export default function SignIn() {
             <Pressable style={styles.button}>
                     <Text style={styles.buttonText}>Sign In</Text>
             </Pressable>
-            <Text style={styles.linkText}>Don't have an account? Register</Text>
+            <Text
+            onPress={() => router.replace("/")}
+            style={styles.linkText}>
+            Don't have an account? Register
+            </Text>
         </View>
     )
 }
