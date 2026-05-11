@@ -15,16 +15,18 @@ const InstructorInfo = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.primary,
+        backgroundColor: Colors.secondary,
         paddingVertical: 15,
         paddingHorizontal: 20,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
         elevation: 8,
+        borderWidth: 1,
+        borderColor: Colors.background,
     },
     instructorName: {
         color: Colors.white,

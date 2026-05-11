@@ -1,13 +1,14 @@
 import BrandName from '@/components/BrandName';
-import { View, StyleSheet, Text, TextInput, Pressable } from "react-native";
-import {Colors} from "../constants/colors";
 import PasswordField from '@/components/PasswordField';
 import { router } from 'expo-router';
+import { Pressable, StyleSheet, Text, TextInput } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Colors } from "../constants/colors";
 
 
 export default function SignIn() {
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <BrandName/>
             <Text style={styles.heading}>Sign In</Text>
             <TextInput style={styles.usernameInput}
@@ -18,11 +19,11 @@ export default function SignIn() {
                     <Text style={styles.buttonText}>Sign In</Text>
             </Pressable>
             <Text
-            onPress={() => router.replace("/")}
+            onPress={() => router.replace("/dashboard")}
             style={styles.linkText}>
             Don't have an account? Register
             </Text>
-        </View>
+        </SafeAreaView>
     )
 }
 

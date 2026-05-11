@@ -1,13 +1,14 @@
 import BrandName from '@/components/BrandName';
 import PasswordField from '@/components/PasswordField';
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from "../constants/colors";
 
 
 export default function Index() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <BrandName/>
       <Text style={styles.heading}>Sign Up</Text>
       <TextInput style={styles.usernameInput}
@@ -22,7 +23,7 @@ export default function Index() {
         style={styles.linkText}>
         Already have an account? Sign In
         </Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
