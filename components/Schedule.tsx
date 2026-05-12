@@ -15,9 +15,9 @@ const Schedule = ({studentName, classNumber, timeSlot}: Props) => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.studentName}>Student Name</Text>
-        <Text style={styles.subInfo}>Class Number : </Text>
-        <Text style={styles.subInfo}>Time Slot : </Text>
+        <Text style={styles.studentName}> {studentName || "Student Name"}  </Text>
+        <Text style={styles.subInfo}>Class Number : {classNumber || ""} </Text>
+        <Text style={styles.subInfo}>Time Slot : {timeSlot || ""} </Text>
         <View style={styles.cardFooter}>
             <Switch
             trackColor={{false: Colors.steel , true: Colors.primary}}
@@ -26,7 +26,7 @@ const Schedule = ({studentName, classNumber, timeSlot}: Props) => {
             onValueChange={toggleSwitch}
             value={isEnabled}
             />
-            <Pressable style={styles.button} >
+            <Pressable style={styles.button}>
                 <Text style={styles.buttonText}>Modify</Text>
             </Pressable>
         </View>
@@ -37,8 +37,8 @@ const Schedule = ({studentName, classNumber, timeSlot}: Props) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 18,
-        marginVertical: 15,
+        marginHorizontal: 16,
+        marginVertical: 9,
         borderRadius: 12,
         borderWidth: 1,
         padding: 10,
@@ -54,16 +54,19 @@ const styles = StyleSheet.create({
         color: Colors.text,
         paddingHorizontal: 2,
         marginVertical: 2,
-        fontSize: 18,
+        fontSize: 19,
+        fontWeight: "500",
     },
     subInfo: {
         color: Colors.text,
         fontSize: 15,
-        paddingHorizontal: 2,
+        paddingHorizontal: 4,
         marginVertical: 2,
+        fontWeight: "500",
     },
     cardFooter: {
         marginVertical: 3,
+        marginHorizontal: 6,
         flex: 2,
         flexDirection: "row",
         justifyContent: "space-between",
