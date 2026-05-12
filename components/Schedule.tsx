@@ -15,7 +15,7 @@ const Schedule = ({studentName, classNumber, timeSlot}: Props) => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.studentName}> {studentName || "Student Name"}  </Text>
+        <Text style={styles.studentName}>{studentName || "Student Name"}</Text>
         <Text style={styles.subInfo}>Class Number : {classNumber || ""} </Text>
         <Text style={styles.subInfo}>Time Slot : {timeSlot || ""} </Text>
         <View style={styles.cardFooter}>
@@ -38,7 +38,7 @@ const Schedule = ({studentName, classNumber, timeSlot}: Props) => {
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 16,
-        marginVertical: 9,
+        marginVertical: 8,
         borderRadius: 12,
         borderWidth: 1,
         padding: 10,
@@ -47,22 +47,24 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
-        shadowRadius: 6,
+        shadowRadius: 9,
         elevation: 4,
     },
     studentName: {
         color: Colors.text,
-        paddingHorizontal: 2,
-        marginVertical: 2,
+        // paddingHorizontal: 2,
+        marginVertical: 1,
         fontSize: 19,
-        fontWeight: "500",
+        fontWeight: "400",
+        paddingLeft:6,
     },
     subInfo: {
         color: Colors.text,
-        fontSize: 15,
-        paddingHorizontal: 4,
-        marginVertical: 2,
-        fontWeight: "500",
+        fontSize: 16,
+        // paddingHorizontal: 2,
+        marginVertical: 1.5,
+        fontWeight: "400",
+        paddingLeft:6,
     },
     cardFooter: {
         marginVertical: 3,

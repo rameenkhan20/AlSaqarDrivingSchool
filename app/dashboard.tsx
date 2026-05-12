@@ -2,7 +2,7 @@ import InstructorInfo from '@/components/InstructorInfo'
 import Schedule from '@/components/Schedule'
 import { Colors } from '@/constants/colors'
 import React from 'react'
-import { ScrollView, StyleSheet, Text } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
@@ -20,8 +20,8 @@ export default function dashboard() {
   return (
     <SafeAreaView style={{flex: 1}}>
       <InstructorInfo />
-      <Text style={styles.heading}> Schedule for the day </Text>
-      <ScrollView style={{flex: 1 , marginTop: 10}}>
+      {/* <Text style={styles.heading}> Schedule for the day </Text> */}
+      <ScrollView style={{flex: 1}}>
         {classes.map((item) => (
             <Schedule
             key={item.id}
@@ -31,6 +31,9 @@ export default function dashboard() {
             />
         ))}
       </ScrollView>
+      <Pressable style={styles.button}>
+        <Text style={styles.buttonText}>Schedule a Class</Text>
+      </Pressable>
     </SafeAreaView>
   )
 }
@@ -40,5 +43,20 @@ const styles = StyleSheet.create({
         marginTop: 9,
         marginLeft: 15,
         fontWeight: "500",
-    }
+    },
+    buttonText: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: Colors.cream,
+    },
+    button: {
+        padding: 9,
+        borderRadius: 12,
+        margin: 10,
+        marginTop: 0,
+        marginHorizontal: 20,
+        backgroundColor: Colors.secondary,
+        alignItems: 'center',      // centers text horizontally
+        justifyContent: 'center',  // centers text vertically
+    },
 })
