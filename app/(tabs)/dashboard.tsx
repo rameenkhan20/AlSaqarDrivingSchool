@@ -4,6 +4,7 @@ import { Colors } from '@/constants/colors'
 import React from 'react'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { Layout } from '@react-navigation/elements'
 
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 // import {
@@ -20,6 +21,8 @@ export default function dashboard() {
     //     // Profile: ProfileScreen,
     // },
     // });
+
+    
     // const Navigation = createStaticNavigation(MyTabs);
 
     const classes = [
@@ -59,6 +62,11 @@ export default function dashboard() {
 }
 
 const styles = StyleSheet.create({
+    container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
     heading: {
         marginTop: 9,
         marginLeft: 15,
