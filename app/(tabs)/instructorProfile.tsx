@@ -1,11 +1,10 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { Layout } from '@react-navigation/elements'
 
 
 export default function instructorProfile() {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>instructorProfile</Text>
     </View>
   )

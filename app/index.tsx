@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from "../constants/colors";
 
 
-export default function Index() {
+export default function SignUp() {
   return (
     <SafeAreaView style={styles.container}>
       <BrandName/>
@@ -19,7 +19,7 @@ export default function Index() {
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </Pressable>
-      <Text onPress={() => router.replace("/signin")} 
+      <Text onPress={() => router.replace("/signin")}
         style={styles.linkText}>
         Already have an account? Sign In
         </Text>

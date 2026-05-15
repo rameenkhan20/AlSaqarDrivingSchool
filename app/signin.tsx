@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, TextInput } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from "../constants/colors";
-
+import {RelativePathString } from 'expo-router';
 
 export default function SignIn() {
     return(
@@ -19,7 +19,7 @@ export default function SignIn() {
                     <Text style={styles.buttonText}>Sign In</Text>
             </Pressable>
             <Text
-            onPress={() => router.replace("/dashboard")}
+            onPress={() => router.replace("/(tabs)/index" as RelativePathString)}
             style={styles.linkText}>
             Don't have an account? Register
             </Text>

@@ -4,27 +4,8 @@ import { Colors } from '@/constants/colors'
 import React from 'react'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Layout } from '@react-navigation/elements'
-
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-// import {
-//   createStaticNavigation,
-//   useNavigation,
-// } from '@react-navigation/native'
-// import Home from './(tabs)/Home'
-
 
 export default function dashboard() {
-    // const MyTabs = createBottomTabNavigator({
-    // screens: {
-    //     Home: Home,
-    //     // Profile: ProfileScreen,
-    // },
-    // });
-
-    
-    // const Navigation = createStaticNavigation(MyTabs);
-
     const classes = [
     { id: 1, studentName: 'Ahmed Al Rashid', classNumber: 1, timeSlot: '8:15 - 9:30 AM' },
     { id: 2, studentName: 'Sara Khalid', classNumber: 2, timeSlot: '9:45 - 11:00 AM' },
@@ -36,7 +17,7 @@ export default function dashboard() {
     ]
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1}} edges={["right", "left","top"]}>
       <InstructorInfo />
       {/* <Text style={styles.heading}> Schedule for the day </Text> */}
       <ScrollView style={{flex: 1}}>
@@ -50,9 +31,9 @@ export default function dashboard() {
         ))}
       </ScrollView>
       <View>
-        <Pressable style={styles.button}>
+        {/* <Pressable style={styles.button}>
             <Text style={styles.buttonText}>My Students</Text>
-        </Pressable>
+        </Pressable> */}
         <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Schedule a Class</Text>
         </Pressable>
@@ -80,8 +61,7 @@ const styles = StyleSheet.create({
     button: {
         padding: 9,
         borderRadius: 12,
-        margin: 10,
-        marginTop: 0,
+        marginVertical: 3,
         marginHorizontal: 20,
         backgroundColor: Colors.secondary,
         alignItems: 'center',      // centers text horizontally

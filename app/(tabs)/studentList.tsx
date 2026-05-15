@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import { Layout } from '@react-navigation/elements'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 
 export default function studentList() {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>studentList</Text>
     </View>
   )
