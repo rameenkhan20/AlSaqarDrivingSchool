@@ -19,6 +19,7 @@ const Schedule = ({studentName, classNumber, timeSlot}: Props) => {
         <Text style={styles.subInfo}>Class Number : {classNumber || ""} </Text>
         <Text style={styles.subInfo}>Time Slot : {timeSlot || ""} </Text>
         <View style={styles.cardFooter}>
+            {/* <Text style={{fontSize: 8, fontWeight: "400", color: Colors.text}}>Session Completed:</Text> */}
             <Switch
             trackColor={{false: Colors.steel , true: Colors.primary}}
             thumbColor={isEnabled ? Colors.accent : Colors.primary}

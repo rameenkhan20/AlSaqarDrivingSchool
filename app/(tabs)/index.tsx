@@ -4,8 +4,12 @@ import { Colors } from '@/constants/colors'
 import React from 'react'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 
 export default function dashboard() {
+
+
     const classes = [
     { id: 1, studentName: 'Ahmed Al Rashid', classNumber: 1, timeSlot: '8:15 - 9:30 AM' },
     { id: 2, studentName: 'Sara Khalid', classNumber: 2, timeSlot: '9:45 - 11:00 AM' },
@@ -17,7 +21,7 @@ export default function dashboard() {
     ]
 
   return (
-    <SafeAreaView style={{flex: 1}} edges={["right", "left","top"]}>
+    <SafeAreaView style={{flex: 1 , backgroundColor: Colors.cream}} edges={["left","right","top"]} >
       <InstructorInfo />
       {/* <Text style={styles.heading}> Schedule for the day </Text> */}
       <ScrollView style={{flex: 1}}>
@@ -34,9 +38,9 @@ export default function dashboard() {
         {/* <Pressable style={styles.button}>
             <Text style={styles.buttonText}>My Students</Text>
         </Pressable> */}
-        <Pressable style={styles.button}>
+        {/* <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Schedule a Class</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
     </SafeAreaView>
   )

@@ -1,13 +1,13 @@
+import TabBar from '@/components/TabBar'
 import { Tabs } from 'expo-router'
 import React from 'react'
-import TabBar from '@/components/TabBar'
 
 const TabLayout = () => {
   return (
-    <Tabs tabBar= {props => <TabBar {...props} />} screenOptions={{headerShown : false}}>
-      <Tabs.Screen name="index" options={{ title: 'Home' }} />
-      <Tabs.Screen name="instructorProfile" options={{ title: 'Profile' }} />
+    <Tabs tabBar= {props => <TabBar {...props} />} screenOptions={{headerShown : false , animation: "fade"}}>
+      <Tabs.Screen name="index" options={{ title: 'Schedule' }} />
       <Tabs.Screen name="studentList" options={{ title: 'Students' }} />
+      <Tabs.Screen name="instructorProfile" options={{ title: 'Settings' }} />
     </Tabs>
   )
 }
