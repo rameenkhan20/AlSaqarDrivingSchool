@@ -4,7 +4,7 @@ export const Colors = {
     accent: '#8C1007',       // bright red - buttons
     cream: '#FFF0C4',        // warm cream - text on dark backgrounds
     steel: '#C9D6DF',        // steel blue - borders, input outlines
-    background: '#F0F5F9',   // soft white - screen backgrounds
+    background: '#F8FAFC',   // soft white - screen backgrounds
     white: '#FFFFFF',        // pure white - input backgrounds
     text: '#1A1A1A',         // dark - main text on light backgrounds
     placeholder: '#9A9A9A',  // gray - placeholder text in inputs

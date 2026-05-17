@@ -1,6 +1,6 @@
 import StudentCard from '@/components/StudentCard';
 import { Colors } from '@/constants/colors';
-import { ScrollView , Text} from 'react-native';
+import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const students = [
@@ -18,8 +18,7 @@ const students = [
 
 export default function StudentList() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }} edges={['top', 'left', 'right']}>
-      <Text>Students</Text>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }} edges={[ 'left', 'right']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 10, paddingTop: 10 }}>
         {students.map((student) => (
           <StudentCard

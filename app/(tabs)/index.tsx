@@ -21,7 +21,7 @@ export default function dashboard() {
     ]
 
   return (
-    <SafeAreaView style={{flex: 1 , backgroundColor: Colors.cream}} edges={["left","right","top"]} >
+    <SafeAreaView style={{flex: 1 , backgroundColor: Colors.background}} edges={["left","right","top"]} >
       <InstructorInfo />
       {/* <Text style={styles.heading}> Schedule for the day </Text> */}
       <ScrollView style={{flex: 1}}>
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    // backgroundColor: Colors.background,
   },
     heading: {
         marginTop: 9,
