@@ -15,7 +15,7 @@ const InstructorInfo = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.secondary,
+        backgroundColor: Colors.primary,
         paddingVertical: 15,
         paddingHorizontal: 20,
         borderBottomLeftRadius: 25,
@@ -26,12 +26,13 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 8,
         borderWidth: 1,
-        borderColor: Colors.background,
+        borderColor: Colors.steel,
     },
     instructorName: {
         color: Colors.white,
         fontSize: 25,
         marginBottom: 2,
+        fontWeight: "600",
     },
     subInfo: {
         color: Colors.steel,
@@ -39,6 +40,5 @@ const styles = StyleSheet.create({
         marginBottom: 3,
     }
 })
-
 
 export default InstructorInfo

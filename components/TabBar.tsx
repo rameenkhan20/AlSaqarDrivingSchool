@@ -79,12 +79,11 @@ function TabBar({ state, descriptors, navigation}: BottomTabBarProps) {
                 style={styles.tabBarItem}
             >
                 {icon[route.name]({
-                    color: isFocused ? Colors.primary : Colors.text
+                    color: isFocused ? Colors.secondary : Colors.steel
                 })}
-                <Text style={{ color: isFocused ? Colors.primary : Colors.text , fontSize: 11, fontWeight: "500" }}>
+                <Text style={{ color: isFocused ? Colors.secondary : Colors.placeholder , fontSize: 11, fontWeight: "500" }}>
                 {label}
                 </Text>
-
             </PlatformPressable>
             );
         })}

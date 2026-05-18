@@ -29,7 +29,6 @@ export default function dashboard() {
             <Schedule
             key={item.id}
             studentName={item.studentName}
-            classNumber={item.classNumber}
             timeSlot={item.timeSlot}
             />
         ))}
@@ -51,25 +50,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: Colors.background,
   },
     heading: {
         marginTop: 9,
         marginLeft: 15,
         fontWeight: "500",
     },
-    buttonText: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: Colors.white,
-    },
-    button: {
-        padding: 9,
-        borderRadius: 12,
-        marginVertical: 3,
-        marginHorizontal: 20,
-        backgroundColor: Colors.secondary,
-        alignItems: 'center',      // centers text horizontally
-        justifyContent: 'center',  // centers text vertically
-    },
+    // buttonText: {
+    // fontSize: 16,
+    // fontWeight: "500",
+    // color: Colors.white,
+    // },
+    // button: {
+    //     padding: 9,
+    //     borderRadius: 12,
+    //     marginVertical: 3,
+    //     marginHorizontal: 20,
+    //     backgroundColor: Colors.secondary,
+    //     alignItems: 'center',      // centers text horizontally
+    //     justifyContent: 'center',  // centers text vertically
+    // },
 })

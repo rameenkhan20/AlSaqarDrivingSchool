@@ -3,7 +3,7 @@ import PasswordField from '@/components/PasswordField';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, TextInput } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Colors } from "../constants/colors";
+import { Colors } from "../../constants/colors";
 
 
 export default function SignUp() {
@@ -16,16 +16,17 @@ export default function SignUp() {
       ></TextInput>
       <PasswordField placeholder='Password'/>
       <PasswordField placeholder='Confirm Password'/>
-      <Pressable style={styles.button}>
+      <Pressable onPress={() => router.replace("/(auth)/signin")} style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </Pressable>
-      <Text onPress={() => router.replace("/signin")}
+      <Text
         style={styles.linkText}>
         Already have an account? Sign In
         </Text>
     </SafeAreaView>
   );
 }
+
 
 
 const styles = StyleSheet.create({
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
     margin: 15,
-    color: Colors.secondary,
+    color: Colors.primary,
   },
   usernameInput: {
     height: 40,
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,
+    backgroundColor: Colors.white,
     borderColor: Colors.secondary,
   },
   buttonText: {
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   linkText: {
     textAlign: "center",
     margin: 10,
-    color: Colors.secondary,
+    color: Colors.primary,
     fontWeight: "500",
   }
 })
