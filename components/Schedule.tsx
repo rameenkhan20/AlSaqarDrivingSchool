@@ -1,35 +1,16 @@
 import { Colors } from '@/constants/colors';
-import React , { useState } from 'react';
+import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-
-
 type Props = {
+    id: number;
     studentName : string;
     timeSlot : string;
+    sessionCompletion : boolean;
+    onDone : (id: number) => void;
 }
 
-const Schedule = ({studentName, timeSlot}: Props) => {
-    // const classes = [
-    //     { id: 1, studentName: 'Ahmed Al Rashid', classNumber: 1, timeSlot: '8:15 - 9:30 AM' },
-    //     { id: 2, studentName: 'Sara Khalid', classNumber: 2, timeSlot: '9:45 - 11:00 AM' },
-    //     { id: 3, studentName: 'Mohammed Yusuf', classNumber: 3, timeSlot: '11:15 - 12:30 PM' },
-    //     { id: 4, studentName: 'Fatima Hassan', classNumber: 4, timeSlot: '12:45 - 2:00 PM' },
-    //     { id: 5, studentName: 'Omar Siddiqui', classNumber: 5, timeSlot: '2:15 - 3:30 PM' },
-    //     { id: 6, studentName: 'Layla Abdullah', classNumber: 6, timeSlot: '3:45 - 5:00 PM' },
-    //     { id: 7, studentName: 'Khalid Mahmood', classNumber: 7, timeSlot: '5:15 - 6:30 PM' },
-    // ]
-
-    // const [sessionCompleted , setSessionCompleted] = useState(false);
-
-    // function onSessionCompletion(prev : boolean){
-    //     const myTimeout = setTimeout(() => {
-    //         classes.find(index )
-    //         classes.filter()
-    //     }, 1000);
-    //     return !prev;
-    // }
-
+const Schedule = ({id, studentName, timeSlot, sessionCompletion, onDone}: Props) => {
   return (
     <View style={styles.container}>
         <View style={styles.flexRow}>
@@ -39,15 +20,17 @@ const Schedule = ({studentName, timeSlot}: Props) => {
                 <Text style={styles.subInfo}>Time Slot : {timeSlot || ""} </Text>
             </View>
             <View style={[styles.flexCol , {gap: 4}]}>
-                <Pressable style={styles.button}>
-                        <Text style={styles.buttonText}>Done</Text>
+                <Pressable style={styles.button} onPress={() => {
+                    sessionCompletion = true;
+                    onDone(id);
+                }}>
+                    <Text style={styles.buttonText}>Done</Text>
                 </Pressable>
                 <Pressable style={styles.button}>
                     <Text style={styles.buttonText}>Modify</Text>
                 </Pressable>
             </View>
         </View>
-
     </View>
   )
 }
