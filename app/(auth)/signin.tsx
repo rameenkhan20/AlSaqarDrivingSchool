@@ -4,45 +4,44 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, TextInput } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from "../../constants/colors";
-import {RelativePathString } from 'expo-router';
+import { RelativePathString } from 'expo-router';
 
 export default function SignIn() {
-    return(
-        <SafeAreaView style={styles.container}>
-            <BrandName/>
-            <Text style={styles.heading}>Sign In</Text>
-            <TextInput style={styles.usernameInput}
-                    placeholder="Username"
-            ></TextInput>
-            <PasswordField placeholder='Password' />
-            <Pressable onPress={() => router.replace("/(auth)/completeProfile")} style={styles.button}>
-                    <Text style={styles.buttonText}>Sign In</Text>
-            </Pressable>
-            <Text
-            
-            style={styles.linkText}>
-            Don't have an account? Register
-            </Text>
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={styles.container}>
+      <BrandName />
+      <Text style={styles.heading}>Sign In</Text>
+      <TextInput style={styles.usernameInput}
+        placeholder="Username"
+      ></TextInput>
+      <PasswordField placeholder='Password' />
+      <Pressable onPress={() => router.replace("/(auth)/completeProfile")} style={styles.button}>
+        <Text style={styles.buttonText}>Sign In</Text>
+      </Pressable>
+      <Text
+        style={styles.linkText}>
+        Don't have an account? Register
+      </Text>
+    </SafeAreaView>
+  )
 }
 
 
 const styles = StyleSheet.create({
-    container:{
+  container: {
     flex: 1,
     justifyContent: "center",
     padding: 20,
     backgroundColor: Colors.background,
-    },
-    heading: {
+  },
+  heading: {
     fontSize: 26,
     fontWeight: "700",
     textAlign: "center",
     margin: 15,
     color: Colors.primary,
-    },
-    usernameInput: {
+  },
+  usernameInput: {
     height: 40,
     padding: 9,
     borderRadius: 10,

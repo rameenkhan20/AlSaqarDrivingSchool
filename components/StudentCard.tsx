@@ -1,14 +1,14 @@
 import { Colors } from '@/constants/colors';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-type Props = {
+type studentCardProps = {
     studentId : number;
     studentName: string;
     totalClasses: number;
     completedClasses: number;
 }
 
-const StudentCard = ({ studentId, studentName, totalClasses, completedClasses }: Props) => {
+const StudentCard = ({ studentId, studentName, totalClasses, completedClasses }: studentCardProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>

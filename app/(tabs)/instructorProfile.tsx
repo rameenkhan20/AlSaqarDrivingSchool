@@ -8,7 +8,6 @@ export default function Settings() {
     <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
 
-        {/* Profile Card */}
         <View style={styles.profileCard}>
           <View style={styles.avatar}>
             <Text style={styles.avatarText}>B</Text>
@@ -26,14 +25,12 @@ export default function Settings() {
           <SettingsRow icon="lock-closed-outline" label="Change Password" />
         </View>
 
-        {/* App Section */}
         <Text style={styles.sectionTitle}>App</Text>
         <View style={styles.section}>
           <SettingsRow icon="notifications-outline" label="Notifications" />
           <SettingsRow icon="language-outline" label="Language" />
         </View>
 
-        {/* Logout */}
         <Pressable style={styles.logoutButton}>
           <Ionicons name="log-out-outline" size={20} color={Colors.white} />
           <Text style={styles.logoutText}>Log Out</Text>

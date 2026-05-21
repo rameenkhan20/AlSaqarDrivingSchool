@@ -3,11 +3,11 @@ import Entypo from '@expo/vector-icons/Entypo';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
-type props = {
+type passwordProps = {
     placeholder : string
 }
 
-const PasswordField = ({placeholder} : props) => {
+const PasswordField = ({placeholder} : passwordProps) => {
     const [showPassword, setShowPassword] = useState(true);
 
     function passwordOnPressFunction(){

@@ -2,15 +2,16 @@ import { Colors } from '@/constants/colors';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-type Props = {
+type scheduleCardProps = {
     id: number;
+    studentId : number;
     studentName : string;
     timeSlot : string;
     sessionCompletion : boolean;
-    onDone : (id: number) => void;
+    onDone : (id: number, studentId: number) => void;
 }
 
-const Schedule = ({id, studentName, timeSlot, sessionCompletion, onDone}: Props) => {
+const Schedule = ({id, studentId, studentName, timeSlot, sessionCompletion, onDone}: scheduleCardProps) => {
   return (
     <View style={styles.container}>
         <View style={styles.flexRow}>
@@ -22,7 +23,7 @@ const Schedule = ({id, studentName, timeSlot, sessionCompletion, onDone}: Props)
             <View style={[styles.flexCol , {gap: 4}]}>
                 <Pressable style={styles.button} onPress={() => {
                     sessionCompletion = true;
-                    onDone(id);
+                    onDone(id, studentId);
                 }}>
                     <Text style={styles.buttonText}>Done</Text>
                 </Pressable>

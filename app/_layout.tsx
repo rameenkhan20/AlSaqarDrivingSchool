@@ -1,6 +1,12 @@
 import React from "react";
 import {Stack} from "expo-router"
+import { StudentClassContextProvider } from "@/context/studentClassesContext";
 
 export default function RootLayout() {
-    return <Stack screenOptions={{headerShown: false}}/>;
+    return (
+      <StudentClassContextProvider>
+        <Stack screenOptions={{headerShown: false}}/>
+      </StudentClassContextProvider>
+    )
+
 }
