@@ -1,4 +1,4 @@
-import { Children, createContext, useState } from "react";
+import { createContext, useState } from "react";
 
 const students = [
   { id: 1, studentId: 101, studentName: 'Ahmed Al Rashid', totalClasses: 20, completedClasses: 12 },
@@ -14,26 +14,44 @@ const students = [
   { id: 11, studentId: 111, studentName: 'Hana Al Farsi', totalClasses: 18, completedClasses: 14 },
 ]
 
+// interface studentList{
+//     id: number,
+//     studentId: number,
+//     studentName: string,
+//     totalClasses: number,
+//     completedClasses: number,
+// }
+
 //custom Hook
 const useClassCount = () => {
     const [studentList , setStudentList] = useState(students);
 
     function classCountIncrement(studentId: number){
         setStudentList(prev =>
-            prev.map(currentStudent =>
-                (currentStudent.studentId === studentId) ?
+            prev.map(currentStudent => {
+                const shouldUpdate = ((currentStudent.studentId === studentId) && (currentStudent.completedClasses < currentStudent.totalClasses))
+                return shouldUpdate ?
                 {...currentStudent, completedClasses : currentStudent.completedClasses + 1 } :
                 currentStudent
-            )
-        )
+            }))
     }
+
+    // function studentListUpdateBasedOnClasses(studentId: number , completedClasses: number, totalClasses: number){
+    //     setStudentList(prev => 
+    //         prev.map(student => {
+    //             const classLimitConditional = (student.completedClasses === student.totalClasses)
+    //             return classLimitConditional ? 
+    //         })
+    //     )
+    // }
+    
     return {studentList, classCountIncrement};
 }
 
 
 export const studentClassContext = createContext<{
     studentList: typeof students,
-    classCountIncrement: (studentId: number) => void } | undefined>(undefined);
+    classCountIncrement: (studentId: number) => void} | undefined>(undefined);
 
 export const StudentClassContextProvider = ({children}: any) => {
     const {studentList , classCountIncrement} = useClassCount();
