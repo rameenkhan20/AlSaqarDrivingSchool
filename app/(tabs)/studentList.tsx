@@ -24,6 +24,7 @@ export default function StudentList() {
             studentName={student.studentName}
             totalClasses={student.totalClasses}
             completedClasses={student.completedClasses}
+            scheduledClasses={student.scheduledClasses}
           />
         ))}
       </ScrollView>

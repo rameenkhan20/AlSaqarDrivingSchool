@@ -1,19 +1,29 @@
 import { Colors } from '@/constants/colors';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { DatePicker } from '@/components/ui/date-picker';
 import { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 type studentCardProps = {
     studentId : number;
     studentName: string;
     totalClasses: number;
     completedClasses: number;
+    scheduledClasses: Date[];
 }
 
-const StudentCard = ({ studentId, studentName, totalClasses, completedClasses }: studentCardProps) => {
-    const [dateTime, setDateTime] = useState<Date | undefined>();
-    const [isPressed , setIsPress] = useState(false);
 
+const StudentCard = ({ studentId, studentName, totalClasses, completedClasses, scheduledClasses }: studentCardProps) => {
+    const [isPressed , setIsPress] = useState(false);
+    const [selectedDateTime , setSelectedDateTime] = useState<Date | null>(null);
+
+    
+    // const {scheduledDateTime} = useContext(studentClassContext);
+
+    function onPressHandler(){
+      setIsPress(prev => !prev);
+
+      // setSelectedDateTime(scheduledDateTime)
+    }
+    
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>
@@ -23,11 +33,11 @@ const StudentCard = ({ studentId, studentName, totalClasses, completedClasses }:
         <Text style={styles.name}>{studentName}</Text>
         <Text style={styles.subInfo}>Classes Completed: {completedClasses}/{totalClasses}</Text>
       </View>
-      <Pressable  onPress={() => setIsPress(prev => !prev)}
+      <Pressable  onPress={() => onPressHandler}
         style={styles.button}>
         <Text  style={styles.buttonText}>Schedule</Text>
       </Pressable>
-      {isPressed ? <DatePicker/> : null}
+      {/* {isPressed ? <DatePicker/> : null} */}
     </View>
   )
 }
