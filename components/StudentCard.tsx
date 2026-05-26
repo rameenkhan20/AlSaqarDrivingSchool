@@ -1,5 +1,7 @@
 import { Colors } from '@/constants/colors';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { DatePicker } from '@/components/ui/date-picker';
+import { useState } from 'react';
 
 type studentCardProps = {
     studentId : number;
@@ -9,6 +11,9 @@ type studentCardProps = {
 }
 
 const StudentCard = ({ studentId, studentName, totalClasses, completedClasses }: studentCardProps) => {
+    const [dateTime, setDateTime] = useState<Date | undefined>();
+    const [isPressed , setIsPress] = useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>
@@ -18,9 +23,11 @@ const StudentCard = ({ studentId, studentName, totalClasses, completedClasses }:
         <Text style={styles.name}>{studentName}</Text>
         <Text style={styles.subInfo}>Classes Completed: {completedClasses}/{totalClasses}</Text>
       </View>
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Schedule</Text>
+      <Pressable  onPress={() => setIsPress(prev => !prev)}
+        style={styles.button}>
+        <Text  style={styles.buttonText}>Schedule</Text>
       </Pressable>
+      {isPressed ? <DatePicker/> : null}
     </View>
   )
 }
@@ -70,6 +77,7 @@ const styles = StyleSheet.create({
   subInfo: {
     fontSize: 13,
     color: Colors.placeholder,
+    fontWeight: "500",
   },
   button: {
     backgroundColor: Colors.secondary,
