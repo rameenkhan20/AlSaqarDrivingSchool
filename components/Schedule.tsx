@@ -1,39 +1,83 @@
 import { Colors } from '@/constants/colors';
-import React from 'react';
+import { studentClassContext } from '@/context/studentClassesContext';
+import useDateTimePicker from '@/hooks/useDateTimePicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import React, { useContext } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 type scheduleCardProps = {
     id: number;
-    studentId : number;
-    studentName : string;
-    timeSlot : string;
-    sessionCompletion : boolean;
-    onDone : (id: number, studentId: number) => void;
+    studentId: number;
+    studentName: string;
+    timeSlot: string;
+    sessionCompletion: boolean;
+    onDone: (id: number, studentId: number) => void;
 }
 
-const Schedule = ({id, studentId, studentName, timeSlot, sessionCompletion, onDone}: scheduleCardProps) => {
-  return (
-    <View style={styles.container}>
-        <View style={styles.flexRow}>
-            <View style={styles.flexCol}>
-                <Text style={styles.studentName}>{studentName || "Student Name"}</Text>
-                {/* <Text style={styles.subInfo}>Class Number : {classNumber || ""} </Text> */}
-                <Text style={styles.subInfo}>Time Slot : {timeSlot || ""} </Text>
-            </View>
-            <View style={[styles.flexCol , {gap: 4}]}>
-                <Pressable style={styles.button} onPress={() => {
-                    sessionCompletion = true;
-                    onDone(id, studentId);
-                }}>
-                    <Text style={styles.buttonText}>Done</Text>
-                </Pressable>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText}>Modify</Text>
-                </Pressable>
+const Schedule = ({ id, studentId, studentName, timeSlot, sessionCompletion, onDone }: scheduleCardProps) => {
+    const { step, date, setStep, setDate, openPicker, closePicker } = useDateTimePicker();
+    const today = new Date();
+    const thirtyDaysFromNow = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+    const scheduleContext = useContext(studentClassContext);
+    if(!scheduleContext) throw new Error("No context Found")
+    const {modifyScheduledClass} = scheduleContext;
+
+    function onPressHandler(){
+      openPicker()
+    }
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.flexRow}>
+                <View style={styles.flexCol}>
+                    <Text style={styles.studentName}>{studentName || "Student Name"}</Text>
+                    {/* <Text style={styles.subInfo}>Class Number : {classNumber || ""} </Text> */}
+                    <Text style={styles.subInfo}>Time Slot : {timeSlot || ""} </Text>
+                </View>
+                <View style={[styles.flexCol, { gap: 4 }]}>
+                    <Pressable style={styles.button} onPress={() => {
+                        sessionCompletion = true;
+                        onDone(id, studentId);
+                    }}>
+                        <Text style={styles.buttonText}>Done</Text>
+                    </Pressable>
+                    <Pressable style={styles.button} onPress={() => onPressHandler()}>
+                        <Text style={styles.buttonText}>Modify</Text>
+                    </Pressable>
+                    {step === 'date' &&
+                        <DateTimePicker
+                            onChange={(event, selectedDate) => {
+                                if (event.type === "set" && selectedDate) {
+                                    setDate(selectedDate)
+                                    setStep('time')
+                                } else {
+                                    closePicker()
+                                }
+                            }}
+                            mode="date"
+                            minimumDate={today}
+                            maximumDate={thirtyDaysFromNow}
+                            value={date}
+                        />}
+                    {step === 'time' &&
+                        <DateTimePicker
+                            value={date}
+                            onChange={(event, selectedDate) => {
+                                if (selectedDate) {
+                                    setDate(selectedDate)
+                                    console.log(selectedDate.toString())
+                                    modifyScheduledClass(studentId, selectedDate);
+                                    closePicker()
+                                }
+                            }}
+                            mode="time"
+                        />
+                    }
+                </View>
             </View>
         </View>
-    </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({
@@ -61,7 +105,7 @@ const styles = StyleSheet.create({
         marginVertical: 1,
         fontSize: 19,
         fontWeight: "500",
-        paddingLeft:6,
+        paddingLeft: 6,
     },
     subInfo: {
         color: Colors.text,
@@ -69,7 +113,7 @@ const styles = StyleSheet.create({
         // paddingHorizontal: 2,
         marginVertical: 1.5,
         fontWeight: "semibold",
-        paddingLeft:6,
+        paddingLeft: 6,
     },
     cardFooter: {
         marginVertical: 3,
@@ -79,7 +123,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
     },
-    flexRow : {
+    flexRow: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"

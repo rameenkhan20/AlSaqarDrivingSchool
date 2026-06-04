@@ -1,6 +1,10 @@
 import { Colors } from '@/constants/colors';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useContext} from 'react';
+import { studentClassContext } from '@/context/studentClassesContext';
+import useDateTimePicker from '@/hooks/useDateTimePicker';
 
 type studentCardProps = {
     studentId : number;
@@ -12,18 +16,20 @@ type studentCardProps = {
 
 
 const StudentCard = ({ studentId, studentName, totalClasses, completedClasses, scheduledClasses }: studentCardProps) => {
-    const [isPressed , setIsPress] = useState(false);
-    const [selectedDateTime , setSelectedDateTime] = useState<Date | null>(null);
+    const today = new Date();
+    const thirtyDaysFromNow = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
 
-    
-    // const {scheduledDateTime} = useContext(studentClassContext);
+    const {step , date, setStep, setDate, openPicker, closePicker} = useDateTimePicker();
+
+    const scheduleContext = useContext(studentClassContext);
+    if(!scheduleContext) throw new Error("No context Found")
+    const {scheduledDateTime} = scheduleContext;
+
 
     function onPressHandler(){
-      setIsPress(prev => !prev);
-
-      // setSelectedDateTime(scheduledDateTime)
+      openPicker()
     }
-    
+
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>
@@ -33,11 +39,39 @@ const StudentCard = ({ studentId, studentName, totalClasses, completedClasses, s
         <Text style={styles.name}>{studentName}</Text>
         <Text style={styles.subInfo}>Classes Completed: {completedClasses}/{totalClasses}</Text>
       </View>
-      <Pressable  onPress={() => onPressHandler}
+      <Pressable  onPress={() => onPressHandler()}
         style={styles.button}>
         <Text  style={styles.buttonText}>Schedule</Text>
       </Pressable>
-      {/* {isPressed ? <DatePicker/> : null} */}
+      {step === 'date' &&
+      <DateTimePicker
+        onChange={(event, selectedDate) => {
+          if (event.type === "set" && selectedDate){
+            setDate(selectedDate)
+            setStep('time')
+          }else{
+            closePicker()
+          }
+        }}
+        mode="date"
+        minimumDate={today}
+        maximumDate={thirtyDaysFromNow}
+        value={date}
+      />}
+      {step === 'time' &&
+      <DateTimePicker
+        value={date}
+        onChange={(event, selectedDate) => {
+          if (selectedDate){
+            setDate(selectedDate)
+            console.log(selectedDate.toString())
+            scheduledDateTime(studentId,selectedDate);
+            closePicker()
+          }
+        }}
+        mode="time"
+      />
+      }
     </View>
   )
 }
