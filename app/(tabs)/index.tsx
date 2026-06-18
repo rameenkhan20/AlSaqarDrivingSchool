@@ -2,7 +2,7 @@ import InstructorInfo from '@/components/InstructorInfo'
 import Schedule from '@/components/Schedule'
 import { Colors } from '@/constants/colors'
 import { studentClassContext } from '@/context/studentClassesContext'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import Animated, { LinearTransition, SlideOutLeft } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -12,7 +12,7 @@ export default function dashboard() {
 
   const context = useContext(studentClassContext);
   if (!context) throw new Error('No context');
-  const { studentList, classCountIncrement } = context;
+  const { studentList, classCountIncrement} = context;
 
   // const classes = [
   //   { id: 1, studentId: 101, studentName: 'Ahmed Al Rashid', classNumber: 1, timeSlot: '8:15 - 9:30 AM', sessionCompletion: false },

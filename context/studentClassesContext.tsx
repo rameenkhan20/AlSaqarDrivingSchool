@@ -54,19 +54,39 @@ const useClassCount = () => {
         ))
     }
 
-    return {studentList, classCountIncrement, scheduledDateTime, modifyScheduledClass};
-}
+    function addNewStudent(studentName: string , totalClasses: number){
+        const existingIds = studentList.map(student => student.id)
+        const largestId = Math.max(...existingIds)
+        const newStudentId = largestId + 1 
 
+        const newStudent = {
+            id: newStudentId,
+            studentId: newStudentId,
+            studentName: studentName,
+            totalClasses: totalClasses,
+            completedClasses: 0,
+            scheduledClasses: [],
+            sessionCompletion: false,
+        }
+
+        setStudentList(prev => [...prev , newStudent])
+
+    }
+
+    return {studentList, classCountIncrement, scheduledDateTime, modifyScheduledClass, addNewStudent};
+}
+    
 export const studentClassContext = createContext<{
     studentList: typeof students,
     classCountIncrement: (studentId: number) => void,
     scheduledDateTime: (studentId: number, dateTime: Date) => void
-    modifyScheduledClass: (studentId: number, modifiedDateTime: Date) => void} | undefined>(undefined);
+    modifyScheduledClass: (studentId: number, modifiedDateTime: Date) => void
+    addNewStudent: (studentName: string , totalClasses: number) => void} | undefined>(undefined);
 
 export const StudentClassContextProvider = ({children}: any) => {
-    const {studentList , classCountIncrement, scheduledDateTime, modifyScheduledClass} = useClassCount();
+    const {studentList , classCountIncrement, scheduledDateTime, modifyScheduledClass, addNewStudent} = useClassCount();
 
-    return <studentClassContext.Provider value={{studentList,classCountIncrement,scheduledDateTime,modifyScheduledClass}}>
+    return <studentClassContext.Provider value={{studentList,classCountIncrement,scheduledDateTime,modifyScheduledClass,addNewStudent}}>
         {children}
     </studentClassContext.Provider>
 }
