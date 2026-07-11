@@ -66,7 +66,7 @@ const Schedule = ({ id, studentId, studentName, timeSlot, sessionCompletion, onD
                             onChange={(event, selectedDate) => {
                                 if (selectedDate) {
                                     setDate(selectedDate)
-                                    console.log(selectedDate.toString())
+                                    // console.log(selectedDate.toString())
                                     modifyScheduledClass(studentId, selectedDate);
                                     closePicker()
                                 }
