@@ -54,7 +54,11 @@ create table students (
 ```
 
 - `instructor_id` is **not nullable** — every student belongs to exactly one instructor's roster. This is a deliberate schema decision per the roadmap's open question (§2.3): if the client's real-world model turns out to allow reassignment/sharing across instructors, that requires a migration, not a workaround — flag it rather than working around a `not null` constraint with nulls.
-- The `studentId` vs. internal `id` distinction flagged as an open question in the roadmap belongs here: if the client confirms `studentId` is a real, client-assigned enrollment number, add a separate `enrollment_number text` column rather than overloading `id`.
+- **Resolved 2026-07-13:** `studentId` is not client-assigned. Add `student_number` as a database-generated identity column:
+```sql
+  student_number int generated always as identity
+```
+  Read-only in the UI — never accept it as form input. `id` (uuid) remains the internal PK/FK target; `student_number` is purely the human-facing display number.
 
 ### `scheduled_classes`
 

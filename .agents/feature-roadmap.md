@@ -156,6 +156,7 @@ Everything in this phase applies *across* the domains already built, rather than
 | Decision | Resolved in | Outcome |
 |---|---|---|
 | Firebase vs. Supabase | §0 | **Supabase.** Postgres + Supabase Auth. Relational data model (separate tables, FK joins) is now a standing assumption across Phases 1–6, not a per-phase choice. |
+| Student identification strategy | Phase 2.3 | **Backend auto-generated.** No manual entry, no client-assigned enrollment number. Postgres generates `student_number` (identity column) on insert; UI displays it read-only post-enrollment. |
 
 ## Open Questions Log (carried and consolidated across phases)
 
